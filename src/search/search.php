@@ -1,7 +1,14 @@
 <?php
-$dbServer = mysql_pconnect('localhost','root','85878500');
+$host = '';     //Your host name goes here
+$username = ''; //Your db username goes here
+$password = ''; //Your db password goes here
+$db = ''; //Your database name goes here
+$dbServer = mysql_pconnect($host,$username,$password);
 if($dbServer){
-		mysql_select_db('musx',$dbServer);
+		if(!mysql_select_db($db,$dbServer)){
+			header("location:gettingstarted.php");
+		}
+		
 }
 
 if(!isset($_GET['q'])){
