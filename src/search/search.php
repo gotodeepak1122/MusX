@@ -2,7 +2,7 @@
 $host = '';     //Your host name goes here
 $username = ''; //Your db username goes here
 $password = ''; //Your db password goes here
-$db = ''; //Your database name goes here
+$db = 'musx'; //Please do not change this variable
 $dbServer = mysql_pconnect($host,$username,$password);
 if($dbServer){
 		if(!mysql_select_db($db,$dbServer)){
