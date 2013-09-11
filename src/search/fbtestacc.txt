@@ -1,0 +1,37 @@
+Login Email:	zeetestacc
+Password:	airtel
+
+
+facebook logout link:
+https://www.facebook.com/?stype=lo&jlou=Afd_Dn3mCAqzlx3EDnofAW-dEVaUI5yBMN-kGdrMPh7ZskLgcZZMr9H4hAIbdMNC8LzILY-j8upcCw99cwBETuwz&smuh=11278&lh=Ac_BhD9saEuh3AJ8
+facebook edit profile link:
+https://www.facebook.com/profile.php?id=100006534972878&sk=info&edit=eduwork
+
+
+Notes:
+
+Facebook does not maintain PHP sessions. Instead relies on cookies.
+
+1. When opening facebook initially 3 cookies are created:
+	1. datr (HttpOnly) 2. reg_fb_gate  3. reg_fb_ref  4. wd
+	
+	1. datr seems to be some kind of authentication key or verification key created during opening the site for the first time.
+	2. reg_fb_gate seems to hold the current address accessed or simply the home address.
+	3. reg_fb_ref seems to hold the referring address. The address is before logging into the account seems to be the reg_fb_gate address i.e the home address.
+	4. wd holds the width and height of the screen.
+	
+2. I deleted the cookies belonging to facebook before login and the login failed.
+3. After logging in 11 cookies are created
+	1. act  2. c_user  3. csm  4. datr (same)  5. fr (HttpOnly) 6. lu (HttpOnly)  7. p  8. presence (secure connections only) 9. s (HttpOnly) 10. sub  11. xs(HttpOnly)
+	
+	1. act contains some number
+	2. c_user contains user id	
+	3. csm contains a single digit
+	4. datr contains authentication key but not the same with which i logged in.
+	5. fr contains longer authentication key
+	6. lu contains yet another key smaller in length (All three seems to be base_encoded).
+	7. p contains number 200
+	8. presence contains some kind of long key.
+	9. s contains another key
+	10. sub contains 9 digit number 
+	

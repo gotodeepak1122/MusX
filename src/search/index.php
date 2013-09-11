@@ -3,9 +3,19 @@
 	<head>
 		<script type='text/javascript'>
 		
+			function clearField(elem){
+				document.getElementById(elem.id).style.color='gray';
+				document.getElementById(elem.id).value='';
+				document.getElementById('body').style.backgroundImage="url('img/bg.png')";
+			}
+			function setValue(elem){
+				document.getElementById(elem.id).style.color='rgb(190,190,190)';
+				document.getElementById(elem.id).value="what's your genre?";
+				document.getElementById('body').style.backgroundImage="url('img/bgt.png')";
+			}
 			function clearIt(elem,elem2){
-				document.getElementById(elem).innerHTML=' ';
-				document.getElementById(elem2).value ='';
+				document.getElementById(elem).innerHTML='';
+				
 			}
 			
 			function sendData(){
@@ -13,7 +23,7 @@
 					connect = new XMLHttpRequest();
 				}
 				
-				connect.open("GET","search.php?q="+document.getElementById('searchip').value,true);
+				connect.open("GET","search.php/search/"+document.getElementById('searchip').value,true);
 				connect.onreadystatechange = function (){
 												if(connect.readyState == 4 && connect.status == 200){
 													document.getElementById('container').innerHTML='';
@@ -28,32 +38,28 @@
 				connect.send(null);
 				
 			}
+				
 		</script>
-		
-		<style>
-			.result_div {
-				background-color:rgb(245,245,245);
-				display: inline-block;
-				padding:3px;
-				color:gray;
-				margin-right:5px;
-				border:solid thin rgb(205,205,205);
-			}
-		</style>
+	
 		<title>Musx Search Component</title>
+		<link rel='stylesheet'  href='design.css' media='screen' />
 	</head>
 	
-	<body>
-		<h1>Musx</h1>
-		<h3>Search</h3>
+	<body id='body'>
+		<div class='header'>
+			<h3>Musx</h3> <b> | </b>
+			<h5>Search</h5>
+		</div>
 		
 		<form name='search_form'>
-			<label for='search_field'>Search:</label>
-			<input type='text' id='searchip' onkeyup='sendData()'/>
-			<input type='button' id='clear' value='X' onclick="clearIt('container','searchip')" />
-		</form>
-		<div id='container'>
+			
+			<input type='text'  value="what's your genre?" onfocus='clearField(this)' onblur='setValue(this)' id='searchip' onkeyup='sendData()' /> 
+			<input type='button' id='clear' value='<' onclick="clearIt('container','searchip')" />
+			<hr id='divide'>
+			<div id='container'>
 			
 		</div>
+		</form>
+		<div id='notice'><text>2013. Musx Inc. All rights reserved.</div>
 	</body>
 	
